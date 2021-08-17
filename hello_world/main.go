@@ -2,8 +2,16 @@ package main
 
 import "fmt"
 
-func hello() string {
-	return "Hello World!"
+func hello(names ...string) string {
+	var name string;
+	
+	if len(names) > 0 {
+		name = names[0]
+	} else {
+		name = "World"
+	}
+
+	return fmt.Sprintf("Hello %v!", name)
 }
 
 func main() {
