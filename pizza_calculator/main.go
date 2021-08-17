@@ -10,7 +10,7 @@ func sharePizza(pizzas int, people int) pizzaReport {
 	const slicesPerPizza = 8
 	var totalSlices int = 8 * pizzas;
 
-	return pizzaReport{ slicesPerPerson: totalSlices/people }
+	return pizzaReport{ slicesPerPerson: totalSlices/people}
 }
 
 func main() {
