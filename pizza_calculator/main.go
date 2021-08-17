@@ -1,6 +1,7 @@
 package main
 
 import "fmt"
+import "flag"
 
 type pizzaReport struct {
 	slicesPerPerson int
@@ -15,5 +16,10 @@ func sharePizza(pizzas int, people int) pizzaReport {
 }
 
 func main() {
-	fmt.Println(sharePizza(1, 2))
+	pizzasPtr := flag.Int("pizzas", 1, "number of pizzas to share")
+	peoplePtr := flag.Int("people", 1, "number of people")
+
+	flag.Parse()
+
+	fmt.Printf("%+v", sharePizza(*pizzasPtr, *peoplePtr))
 }
