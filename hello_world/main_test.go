@@ -2,29 +2,31 @@ package main
 
 import "testing"
 
-func TestHello_GivenNoArguments_ReturnsHelloWorld(t *testing.T) {
-	const expected = "Hello World!"
-	var actual string = hello();
+func TestHello(test *testing.T) {
+	test.Run("given no arguments, returns 'Hello World!'", func(test *testing.T) {
+		const expected = "Hello World!"
+		var actual string = hello();
 
-	if expected != actual {
-		t.Errorf("expected %q but got %q", expected, actual)
-	}
-}
+		if expected != actual {
+			test.Errorf("expected %q but got %q", expected, actual)
+		}
+	})
 
-func TestHello_GivenName_ReturnsHelloName(t *testing.T) {
-	const expected = "Hello Ian!"
-	var actual string = hello("Ian")
+	test.Run("given a string as an argument, returns 'Hello STRING!'", func(test *testing.T) {
+		const expected = "Hello Ian!"
+		var actual string = hello("Ian")
 
-	if expected != actual {
-		t.Errorf("expected %q but got %q", expected, actual)
-	}
-}
+		if expected != actual {
+			test.Errorf("expected %q but got %q", expected, actual)
+		}
+	})
 
-func TestHello_GivenMultipleNames_ReturnsHelloFirstName(t *testing.T) {
-	const expected = "Hello Dave!"
-	var actual string = hello("Dave", "Ian", "James")
+	test.Run("given multiple strings as arguments, returns 'Hello FIRST_STRING!'", func(test *testing.T) {
+		const expected = "Hello Dave!"
+		var actual string = hello("Dave", "Ian", "James")
 
-	if expected != actual {
-		t.Errorf("expected %q but got %q", expected, actual)
-	}
+		if expected != actual {
+			test.Errorf("expected %q but got %q", expected, actual)
+		}	
+	})
 }
