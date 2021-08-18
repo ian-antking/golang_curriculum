@@ -1,10 +1,15 @@
 package main
 
 import "fmt"
+import "errors"
 import "flag"
 
 
-func sharePizza(pizzas int, people int) (slicesPerPerson, leftoverSlices int) {
+func sharePizza(pizzas int, people int) (slicesPerPerson, leftoverSlices int, err error) {
+	if pizzas == 0 || people == 0 {
+		err = errors.New(fmt.Sprintf("cannot share %v pizzas among %v people!", pizzas, people))
+		return
+	}
 	const slicesPerPizza = 8
 	var totalSlices int = 8 * pizzas;
 	slicesPerPerson = totalSlices/people
