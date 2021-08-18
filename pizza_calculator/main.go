@@ -3,16 +3,13 @@ package main
 import "fmt"
 import "flag"
 
-type pizzaReport struct {
-	slicesPerPerson int
-	leftoverSlices int
-}
 
-func sharePizza(pizzas int, people int) pizzaReport {
+func sharePizza(pizzas int, people int) (slicesPerPerson, leftoverSlices int) {
 	const slicesPerPizza = 8
 	var totalSlices int = 8 * pizzas;
-
-	return pizzaReport{ slicesPerPerson: totalSlices/people, leftoverSlices: totalSlices%people}
+	slicesPerPerson = totalSlices/people
+	leftoverSlices = totalSlices%people
+	return 
 }
 
 func main() {
@@ -21,5 +18,5 @@ func main() {
 
 	flag.Parse()
 
-	fmt.Printf("%+v", sharePizza(*pizzasPtr, *peoplePtr))
+	fmt.Println(sharePizza(*pizzasPtr, *peoplePtr))
 }
