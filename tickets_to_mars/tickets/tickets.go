@@ -1,11 +1,5 @@
 package tickets
 
-import "math/rand"
-import "time"
-
-var companies = [3]string{"Virgin Galactic", "Space X", "Space Adventures"}
-var services = [2]string{"round-trip", "one-way"}
-
 type Ticket struct {
 	Company string
 	Days int
@@ -13,15 +7,11 @@ type Ticket struct {
 	Price int
 }
 
-func GenerateTicket() Ticket {
+func GenerateTicket(companies []string, services []string, maxDuration int, maxPrice int, random func(int) int) Ticket {
 	return Ticket{
-		Company: companies[rand.Intn(len(companies))],
-		Days: rand.Intn(365),
-		Service: services[rand.Intn(len(services))],
-		Price: rand.Intn(100),
+		Company: companies[random(len(companies) - 1)],
+		Days: random(maxDuration),
+		Service: services[random(len(services) - 1)],
+		Price: random(maxPrice),
 	}
-}
-
-func init() {
-	rand.Seed(time.Now().UnixNano())
 }
