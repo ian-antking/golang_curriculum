@@ -27,4 +27,14 @@ func TestCell(t *testing.T) {
 
 		assert.True(t, cell.Alive)
 	})
+
+	t.Run("cell methods only affect individual instances", func(t *testing.T) {
+		cell1 := NewCell()
+		cell2 := NewCell()
+
+		cell1.Die()
+
+		assert.False(t, cell1.Alive)
+		assert.True(t, cell2.Alive)
+	})
 }
