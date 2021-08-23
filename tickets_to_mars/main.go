@@ -27,7 +27,16 @@ func main() {
 	json.Unmarshal(configJson, &config)
 	var generatedTickets []tickets.Ticket
 	for count := 0; count <= 10; count += 1 {
-		generatedTickets = append(generatedTickets, tickets.Generate(config.Companies, config.Services, 365, 100, rand.Intn))
+		generatedTickets = append(
+			generatedTickets, 
+			tickets.Generate(
+				config.Companies, 
+				config.Services, 
+				config.MaxDuration, 
+				config.MaxPrice, 
+				rand.Intn,
+			),
+		)
 	}
 
 	for _, ticket := range generatedTickets {
