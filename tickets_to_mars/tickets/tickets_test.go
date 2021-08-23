@@ -12,6 +12,7 @@ func TestTickets(t *testing.T) {
 		stubRandInt := func(number int) int {
 			return number
 		}
+
 		ticket := GenerateTicket(companies, services, 1, 1, stubRandInt)
 
 		assert.Equal(t, "company0", ticket.Company)
@@ -34,4 +35,15 @@ func TestTickets(t *testing.T) {
 		assert.Equal(t, "service1", ticket.Service)
 		assert.Equal(t, 1, ticket.Price)
 	})
+}
+
+func TestFormatTicket(t *testing.T) {
+	t.Run("takes a ticket struct and returns a formatted string", func(t *testing.T) {
+		ticket := Ticket{ Company: "company", Days: 3, Service: "service", Price: 7}
+		expected := "company 3 service $ 7"
+
+		actual := FormatTicket(ticket)
+
+		assert.Equal(t, expected, actual)
+	}) 
 }
