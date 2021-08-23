@@ -9,7 +9,7 @@ type Ticket struct {
 	Price int
 }
 
-func GenerateTicket(companies []string, services []string, maxDuration int, maxPrice int, random func(int) int) Ticket {
+func Generate(companies []string, services []string, maxDuration int, maxPrice int, random func(int) int) Ticket {
 	return Ticket{
 		Company: companies[random(len(companies) - 1)],
 		Days: random(maxDuration),
@@ -18,6 +18,6 @@ func GenerateTicket(companies []string, services []string, maxDuration int, maxP
 	}
 }
 
-func FormatTicket(ticket Ticket) string {
+func Format(ticket Ticket) string {
 	return fmt.Sprintf("%v %v %v $ %v", ticket.Company, ticket.Days, ticket.Service, ticket.Price)
 }
