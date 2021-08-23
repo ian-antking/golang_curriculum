@@ -2,10 +2,12 @@ package cell
 
 type Cell struct {
 	Alive bool
+	X int
+	Y int
 }
 
-func NewCell() Cell {
-	return Cell{ Alive: true }
+func NewCell(x, y int) Cell {
+	return Cell{ Alive: true, X: x, Y: y }
 }
 
 func (c *Cell) Die() {
