@@ -1,0 +1,6 @@
+{
+  "companies": ["Virgin Galactic", "Space X", "Space Adventures"],
+  "services": ["round-trip", "one-way"],
+  "maxDuration": 365,
+  "maxPrice": 100
+}
