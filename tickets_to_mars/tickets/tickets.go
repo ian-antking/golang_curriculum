@@ -9,9 +9,9 @@ type Ticket struct {
 
 func Generate(companies []string, services []string, maxDuration int, maxPrice int, random func(int) int) Ticket {
 	return Ticket{
-		Company: companies[random(len(companies) - 1)],
+		Company: companies[random(len(companies))],
 		Days: random(maxDuration),
-		Service: services[random(len(services) - 1)],
+		Service: services[random(len(services))],
 		Price: random(maxPrice),
 	}
 }

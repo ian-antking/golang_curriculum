@@ -23,6 +23,7 @@ func main() {
 	configJson, _ := os.ReadFile("config.json")
 	json.Unmarshal(configJson, &config)
 	var generatedTickets []tickets.Ticket
+	
 	for count := 0; count <= 10; count += 1 {
 		generatedTickets = append(
 			generatedTickets, 

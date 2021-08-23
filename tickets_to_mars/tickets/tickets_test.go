@@ -10,15 +10,15 @@ func TestTickets(t *testing.T) {
 		companies := []string{ "company0" }
 		services  := []string{ "service0" }
 		stubRandInt := func(number int) int {
-			return number
+			return number - 1
 		}
 
 		ticket := Generate(companies, services, 1, 1, stubRandInt)
 
 		assert.Equal(t, "company0", ticket.Company)
-		assert.Equal(t, 1, ticket.Days)
+		assert.Equal(t, 0, ticket.Days)
 		assert.Equal(t, "service0", ticket.Service)
-		assert.Equal(t, 1, ticket.Price)
+		assert.Equal(t, 0, ticket.Price)
 	})
 
 	t.Run("can will select company and service from slices", func(t *testing.T) {
