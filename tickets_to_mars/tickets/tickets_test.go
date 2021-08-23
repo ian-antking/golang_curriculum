@@ -36,14 +36,3 @@ func TestTickets(t *testing.T) {
 		assert.Equal(t, 1, ticket.Price)
 	})
 }
-
-func TestFormat(t *testing.T) {
-	t.Run("takes a ticket struct and returns a formatted string", func(t *testing.T) {
-		ticket := Ticket{ Company: "company", Days: 3, Service: "service", Price: 7}
-		expected := "company 3 service $ 7"
-
-		actual := Format(ticket)
-
-		assert.Equal(t, expected, actual)
-	}) 
-}

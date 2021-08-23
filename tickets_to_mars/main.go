@@ -2,11 +2,11 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"math/rand"
-	"time"
 	"os"
+	"time"
 	"github.com/ian-antking/golang_curriculum/tickets_to_mars/tickets"
+	"github.com/jedib0t/go-pretty/v6/table"
 )
 
 type configMap struct {
@@ -18,11 +18,8 @@ type configMap struct {
 
 var config configMap
 
-func Init() {
-	rand.Seed(time.Now().UnixNano())
-}
-
 func main() {
+	rand.Seed(time.Now().UnixNano())
 	configJson, _ := os.ReadFile("config.json")
 	json.Unmarshal(configJson, &config)
 	var generatedTickets []tickets.Ticket
@@ -39,7 +36,13 @@ func main() {
 		)
 	}
 
+	tableWriter := table.NewWriter()
+	tableWriter.SetOutputMirror(os.Stdout)
+	tableWriter.AppendHeader(table.Row{"Spaceline", "Days", "Service", "Price (million $)"})
+
 	for _, ticket := range generatedTickets {
-		fmt.Println(tickets.Format(ticket))
+		tableWriter.AppendRow(table.Row{ticket.Company, ticket.Days, ticket.Service, ticket.Price})
 	}
+
+	tableWriter.Render()
 }
