@@ -1,6 +1,8 @@
 # Tickets to Mars
 
-# Running all tests
+Generates random tickets to mars
+
+## Running all tests
 
 ```bash
 go test ./... -v
