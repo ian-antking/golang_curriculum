@@ -2,8 +2,6 @@ package cell
 
 type Cell struct {
 	Alive bool
-	X int
-	Y int
 }
 
 func NewCell(x, y int) Cell {

@@ -27,21 +27,4 @@ func TestCell(t *testing.T) {
 
 		assert.True(t, cell.Alive)
 	})
-
-	t.Run("cells have x and y coordinates that are set at instantiation", func(t *testing.T) {
-		cell := NewCell(1, 1)
-
-		assert.Equal(t, 1, cell.X)
-		assert.Equal(t, 1, cell.Y)
-	})
-
-	t.Run("cell methods only affect individual instances", func(t *testing.T) {
-		cell1 := NewCell(0, 0)
-		cell2 := NewCell(0, 0)
-
-		cell1.Die()
-
-		assert.False(t, cell1.Alive)
-		assert.True(t, cell2.Alive)
-	})
 }
